@@ -45,7 +45,7 @@ const Cart = () => {
                     value={item.quantity}
                     onChange={(e) => updateQuantity(item.id, e.target.value)}
                   />
-                  <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                  <button className="remove-btn" onClick={() => removeFromCart(item.id)}>Remove</button>
                 </div>
               </div>
             ))}

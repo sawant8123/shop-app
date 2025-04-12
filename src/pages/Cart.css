@@ -29,9 +29,16 @@
     margin-top: 1rem;
   }
   
+  .remove-btn {
+
+    background-color: #2e3c29;
+    color: white;
+
+
+  }
   .checkout-btn {
     padding: 0.5rem 1rem;
-    background-color: teal;
+    background-color: #2e3c29;
     color: white;
     border: none;
     cursor: pointer;

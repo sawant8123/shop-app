@@ -8,8 +8,9 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false); // ✅ for popup
 
-  const { addToCart } = useCart(); // ✅ Import cart context
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -26,6 +27,14 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
+  // ✅ Define handleAddToCart function
+  const handleAddToCart = () => {
+    console.log("Add to Cart clicked");
+    addToCart(product);
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 3000);
+  };
+
   if (loading) return <p>Loading...</p>;
   if (!product) return <p>Product not found.</p>;
 
@@ -36,10 +45,13 @@ const ProductDetails = () => {
         <h2>{product.title}</h2>
         <p className="price">₹{product.price}</p>
         <p>{product.description}</p>
-        <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+        <button className="add-to-cart-btn" onClick={handleAddToCart}>
           Add to Cart
         </button>
       </div>
+
+      {/* ✅ Show popup if true */}
+      {showPopup && <div className="popup">Product added to cart!</div>}
     </div>
   );
 };

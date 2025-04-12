@@ -23,14 +23,32 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin: 10px 0;
+
   }
   
   .add-to-cart-btn {
     padding: 10px 20px;
-    background-color: #1f6feb;
+    background-color: #2e3c29;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  .popup {
+    background-color: #234216;
+    color: white;
+    padding: 10px 16px;
+    margin-top: 10px;
+    border-radius: 4px;
+    animation: fadeInOut 3s ease-in-out;
+    text-align: center;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px); }
   }
   

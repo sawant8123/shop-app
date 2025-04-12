@@ -1,48 +1,34 @@
+// src/App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
-import ProtectedRoute from "./components/ProtectedRoute"; // ✅
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
+const AppWrapper = () => {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+
   return (
-    <Router>
-      <Header />
+    <>
+      {!isLoginPage && <Header />}
       <Routes>
-        {/* Public Route */}
         <Route path="/login" element={<Login />} />
-
-        {/* Protected Routes */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Products />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <ProtectedRoute>
-              <ProductDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<ProtectedRoute><Products /></ProtectedRoute>} />
+        <Route path="/product/:id" element={<ProtectedRoute><ProductDetails /></ProtectedRoute>} />
+        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
       </Routes>
-    </Router>
+    </>
   );
-}
+};
+
+const App = () => (
+  <Router>
+    <AppWrapper />
+  </Router>
+);
 
 export default App;
