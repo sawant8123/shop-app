@@ -1,3 +1,16 @@
+# shop-app
+
+# How to set up Project:
+1. Open this:
+   https://github.com/sawant8123/shop-app
+2. Click on Code
+3. Copy HTTP Link
+4. Run This on cmd git clone https://github.com/sawant8123/shop-app
+5. Open folder in Vs code 
+6. After this run command:
+   1.npm i or npm install
+   2.npm run dev
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
